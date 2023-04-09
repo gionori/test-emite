@@ -6,6 +6,8 @@ class User_model extends CI_Model {
     public function __construct() {
         $this->load->database();
         $this->load->helper('xml');
+        //$this->load->library('encrypt');
+
     }
 
 
@@ -41,12 +43,20 @@ class User_model extends CI_Model {
     }
 
 
+    public function get_user_by_email($email) {
+        $query = $this->db->get_where($this->table, array('email' => $email));
+        return $query->result()[0];
+    }
+
+
     public function set_user() {        
+        $password = $this->input->post('password');
+
         $data = array(
             'first_name' => $this->input->post('first_name'),
             'last_name' => $this->input->post('last_name'),
             'email' => $this->input->post('email'),
-            'password' => $this->input->post('password'),
+            'password' => $password,
         );
 
         return $this->db->insert($this->table, $data);
