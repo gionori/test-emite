@@ -3,7 +3,8 @@
 
 function docker_url() {
     if (ENVIRONMENT !== 'production') {
-        return "http://localhost/index.php";
+        return "http://localhost/test-emite/index.php"; // MAMP
+        // return "http://localhost/index.php"; // Docker
     }
     
     $ci =& get_instance();

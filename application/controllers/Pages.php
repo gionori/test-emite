@@ -50,6 +50,12 @@ class Pages extends CI_Controller {
         }
     }
 
+    public function registro() {
+        $this->load->view('templates/header');
+        $this->load->view('pages/register');
+        $this->load->view('templates/footer');
+    }
+
     public function logout() {
         $this->session->unset_userdata(['first_name', 'last_name', 'email']);
         redirect(docker_url());

@@ -1,4 +1,7 @@
 <?php
+
+defined('BASEPATH') OR exit('No direct script access allowed.');
+
 class User_model extends CI_Model {
 
     private $table = 'users';
@@ -6,8 +9,7 @@ class User_model extends CI_Model {
     public function __construct() {
         $this->load->database();
         $this->load->helper('xml');
-        //$this->load->library('encrypt');
-
+        // $this->load->library('encrypt');
     }
 
 
@@ -45,21 +47,29 @@ class User_model extends CI_Model {
 
     public function get_user_by_email($email) {
         $query = $this->db->get_where($this->table, array('email' => $email));
-        return $query->result()[0];
+
+        $error = $this->db->error();
+        if ($error['code'] != 0) {
+            throw new Exception($error['message'], 1);            
+        }
+        
+        return $query->row();
     }
 
 
-    public function set_user() {        
-        $password = $this->input->post('password');
-
+    public function set_user($data_user) {      
         $data = array(
-            'first_name' => $this->input->post('first_name'),
-            'last_name' => $this->input->post('last_name'),
-            'email' => $this->input->post('email'),
-            'password' => $password,
+            'first_name' => $data_user['first_name'],
+            'last_name' => $data_user['last_name'],
+            'email' => $data_user['email'],
+            'password' => $data_user['password'],
         );
-
-        return $this->db->insert($this->table, $data);
+        
+        if ($this->get_user_by_email($data['email']) == NULL) {
+            $this->db->insert($this->table, $data);
+        } else {
+            throw new Exception("Usuario con el email " . $data['email'] . " ya esta registrado", 1);            
+        }
     }
 
 
