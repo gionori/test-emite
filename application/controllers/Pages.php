@@ -35,17 +35,26 @@ class Pages extends CI_Controller {
             $password = $this->input->post('password');
 
             $user = $this->user_model->get_user_by_email($email);
-            if ($user->password === $password) {
-                $this->session->set_userdata(array(
-                    'first_name' => $user->first_name,
-                    'last_name' => $user->last_name,
-                    'email' => $user->email,
-                ));
-    
-                redirect(docker_url() . '/users');
-                
+
+            if ($user != NULL) {
+                if ($user->password === $password) {
+                    $this->session->set_userdata(array(
+                        'first_name' => $user->first_name,
+                        'last_name' => $user->last_name,
+                        'email' => $user->email,
+                    ));
+        
+                    redirect(docker_url() . '/users');
+                    
+                } else {
+                    $this->load->view('templates/header');
+                $this->load->view('pages/unauthorized');
+                $this->load->view('templates/footer');
+                }
             } else {
-                // Implementar error de contraseña
+                $this->load->view('templates/header');
+                $this->load->view('pages/unauthorized');
+                $this->load->view('templates/footer');
             }
         }
     }
