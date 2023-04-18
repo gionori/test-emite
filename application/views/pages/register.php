@@ -83,9 +83,15 @@
             </svg>
             Guardar
         </button>
-    </form>
+    </form>    
+</div>
 
-    
+<div class="d-flex justify-content-center">
+    <a href="<?php echo docker_url() . '/pages/login'; ?>">
+        <small>
+            Ya tengo una cuenta
+        </small>
+    </a>
 </div>
 
 <div id="message"></div>

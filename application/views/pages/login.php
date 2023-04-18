@@ -51,3 +51,11 @@
     </form>
 
 </div>
+
+<div class="d-flex justify-content-center">
+    <a href="<?php echo docker_url() . '/pages/registro'; ?>">
+        <small>
+            No tengo una cuenta
+        </small>
+    </a>
+</div>
