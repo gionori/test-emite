@@ -14,7 +14,7 @@
                                         href="<?php echo $url ?>"
                                 >
                                         <strong>
-                                                H U G O · B L O G
+                                                H U G O · U S E R S
                                         </strong>
                                 </a>
 
@@ -48,6 +48,14 @@
                                                                         href="<?php echo "$url/pages/login" ?>"
                                                                 >
                                                                         Login        
+                                                                </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                                <a
+                                                                        class="nav-link active"
+                                                                        href="<?php echo "$url/pages/registro" ?>"
+                                                                >
+                                                                        Registro        
                                                                 </a>
                                                         </li>
                                                 </ul>

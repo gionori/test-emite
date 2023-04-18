@@ -7,3 +7,8 @@
 * Configuración de databse.php para configuración de la base de datos.
 * Vistas para Usuarios, Home y Formulario de Usuarios.
 * Templates para footer, header, Breadcrumb y paginator.
+* JWT
+* API
+* Respuestas JSON
+* Reportes Jasper
+* Peticiones AJAX

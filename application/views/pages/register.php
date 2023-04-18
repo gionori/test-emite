@@ -101,7 +101,8 @@
 <script>
     (() => {  
         const host = 'localhost'      ;
-        const url = `http://${host}/test-emite/index.php/api/users/register`;
+        const url = `<?php echo docker_url() ?>/api/users/register`;
+
         
         setTimeout(() => {
             setStatusForm(false);            
@@ -134,7 +135,7 @@
                     setStatusForm(false);
 
                     if (ok) {
-                        window.location = `http://${host}/test-emite/index.php/pages/login`;
+                        window.location = `<?php echo docker_url() ?>/pages/login`;
                     } else {
                         alert(res);
                     }
